@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Text Processor</title>
+    <link rel="stylesheet" href="css/converstion.css">
+    <link rel="stylesheet" href="css/loginC.css">
+    <script src="https://cdn.jsdelivr.net/npm/tesseract.js@4.0.3/dist/tesseract.min.js"></script>
+
+</head>
+<body>
+    <div class="container">
+        <h1>Text Processor</h1>
+        <input type="text" id="conv_name" placeholder="Input name converstion" >
+        <br>
+        <select id="sessionDropdown"></select>
+        <h3 style="text-align: left;color: green;">Copy directly text</h3>
+        <textarea  id="inputText" placeholder="Enter your text here"></textarea>
+        <div class="image-to-text-converter">
+            <h3 style="text-align: left;color: green;">From image</h3>
+            <div class="converter-content">
+                <input type="file" id="imageInput" accept="image/*">
+                <button  class="convert-button" onclick="convertImageToText()">Convert</button>
+            </div>
+        </div>
+        <div style="text-align: center;">
+            <button  class="convert-button" id="processButton">Process</button>
+            <button  class="convert-button" id="saveConvButton" disabled>Save</button>
+        </div>
+        <div class="word-list">
+            <table id="resultTable">
+                <thead>
+                    <tr>
+                        <th>Sentence</th>
+                        <th>Information</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+        
+
+        <!-- Modal -->
+        <div id="modal" class="hidden">
+            <div class="input-pair">
+                <input type="text" id="english" placeholder="Tiếng Anh">
+                <input type="text" id="vietnamese" placeholder="Tiếng Việt">
+            </div>
+            <div class="input-pair">
+                <select id="level">
+                    <option value="Easy">Easy</option>
+                    <option value="Medium">Medium</option>
+                    <option value="Hard">Hard</option>
+                </select>
+            </div>
+            <div style="display: flex;justify-content: space-between;margin-bottom: 20px;">
+                <button id="start-recording" style="margin: 5px;">Start Recording</button>
+                <button id="stop-recording" style="margin: 5px;" disabled>Stop Recording</button>
+                <audio id="audio-playback" style="margin: 5px;" controls></audio>
+            </div>
+            <div class="button"><button id="saveButton">Save</button></div>
+        </div>
+    </div>
+    <!-- Login Popup -->
+    <div id="loginPopup" class="popup-login">
+        <div class="popup-content-login">
+            <span class="close-login" onclick="closeLoginPopup()">&times;</span>
+            <h2>Login</h2>
+            <label for="username">Username:</label>
+            <input class="input-single-login" style="text-align: left;" type="text" id="username_login"> <br><br>
+            <label for="password">Password:</label>
+            <input class="input-single-login" style="text-align: left;" type="password" id="password_login"><br>
+            <div class="button_getModel-login"> <button class="button_base-login" onclick="login()">Login</button></div>
+        </div>
+    </div>
+    <div id="sessionPopup" class="popup">
+        <div class="popup-content">
+            <span class="close" onclick="closePopup()">&times;</span>
+            <h2>Thêm Section mới</h2>
+            <input type="text" id="newSessionName" class="input-single" placeholder="Session Name">
+            <button class="button_base" onclick="saveSession()">Save</button>
+        </div>
+    </div>
+    <script src="js/converstion.js"></script>
+    <script src="js/loginC.js"></script>
+</body>
+</html>

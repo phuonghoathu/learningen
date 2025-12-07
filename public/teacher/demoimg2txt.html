@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image to Text Converter</title>
+</head>
+<body>
+    <h1>Upload Image to Convert to Text</h1>
+    <input type="file" id="imageInput" accept="image/*">
+    <button onclick="convertImageToText()">Convert to Text</button>
+    <p id="outputText"></p>
+
+    <!-- Tesseract.js -->
+    <script src="https://cdn.jsdelivr.net/npm/tesseract.js@4.0.3/dist/tesseract.min.js"></script>
+    <script>
+        function convertImageToText() {
+            const imageInput = document.getElementById('imageInput').files[0];
+            const outputText = document.getElementById('outputText');
+
+            if (imageInput) {
+                Tesseract.recognize(
+                    imageInput,
+                    'eng',
+                    {
+                        logger: m => console.log(m)
+                    }
+                ).then(({ data: { text } }) => {
+                    outputText.textContent = text;
+                }).catch(error => {
+                    outputText.textContent = "An error occurred: " + error.message;
+                });
+            } else {
+                outputText.textContent = "Please upload an image.";
+            }
+        }
+    </script>
+</body>
+</html>

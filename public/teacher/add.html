@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thêm từ mới</title>
+    <!-- Toastr CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+    <!-- Toastr JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+    <link rel="stylesheet" href="css/style_add.css">
+    <link rel="stylesheet" href="css/loginC.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Thêm từ mới</h1>
+        </div>
+        <div class="content">
+            <div class="add-word" id="add-word">
+                <div class="dropdown-container">
+                    <select id="sessionDropdown">
+                        <!-- Options will be populated by JavaScript -->
+                    </select>
+                    <input id="session_encode" type="hidden" value="">
+                    <button id="seach_word" class="button_base" onclick="searchWords()">Search</button>
+                    <button id="learn_link" class="button_base" onclick="getQuizLink()">Learn Link</button>
+                    <button id="get_link" class="button_base" onclick="getLink()">Quiz Link</button>
+                </div>
+                <div class="input-pair">
+                    <input type="text" id="english" placeholder="Tiếng Anh">
+                    <input type="text" id="vietnamese" placeholder="Tiếng Việt">
+                </div>
+                <div class="input-pair">
+                    <select id="level">
+                        <option value="Easy">Easy</option>
+                        <option value="Medium">Medium</option>
+                        <option value="Hard">Hard</option>
+                    </select>
+                    <input type="file" id="imageUpload" accept="image/*">
+                </div>
+                <div style="display: flex;justify-content: space-between;margin-bottom: 20px;">
+                    <button id="start-recording">Start Recording</button>
+                    <button id="stop-recording" disabled>Stop Recording</button>
+                    <audio id="audio-playback" controls></audio>
+                </div>
+                <div><textarea class="input-single" style="text-align: left; width: 93%; padding: 10px 20px;" id="description" placeholder="Mô tả"></textarea></div>
+                
+                <div class="button">
+                    <button onclick="addWord()">Thêm</button>
+                </div>
+            </div>
+            <div class="word-list">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Tiếng Anh</th>
+                            <th>Tiếng Việt</th>
+                            <th>Level</th>
+                            <th>Image</th>
+                            <th>Audio</th>
+                            <th>Mô tả</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <!-- More rows as needed -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div id="sessionPopup" class="popup">
+        <div class="popup-content">
+            <span class="close" onclick="closePopup()">&times;</span>
+            <h2>Thêm Section mới</h2>
+            <input type="text" id="newSessionName" class="input-single" placeholder="Session Name">
+            <button class="button_base" onclick="saveSession()">Save</button>
+        </div>
+    </div>
+
+    <div id="learningLinkPopup" class="popup">
+        <div class="popup-content">
+            <span class="close" onclick="closePopup_getLearninglink()">&times;</span>
+            <h2>Learning Link</h2>
+            <select id="modalSessionLearningDropdown"></select> <br>
+            <p id = "yourLearingLink"></p>
+            <button class="button_base" onclick="getLeaningLink()">Create</button>
+        </div>
+    </div>
+
+    <div id="quizLinkPopup" class="popup">
+        <div class="popup-content">
+            <span class="close" onclick="closePopup_quizlink()">&times;</span>
+            <h2>Quiz Link</h2>
+            <p id = "yourQuizLink"></p>
+            <p id = "yourPass"></p>
+            <button class="button_base" onclick="closePopup_quizlink()">OK</button>
+        </div>
+    </div>
+
+    <div id="myModal_gen_link" class="popup">
+        <div class="popup-content" style="text-align: left;">
+            <span class="close" onclick="closePopup_getlink()">&times;</span>
+            <form id="form">
+                <input type="text" id="quizName" class="input-single" placeholder="Quiz Name">
+                <select id="modalSessionDropdown"></select> <br>
+                <label for="numberQuestion">Number Question (Empty for all):</label>
+                <input type="text" id="numberQuestion" class="input-single" name="numberQuestion"
+                    placeholder="All"><br><br>
+
+                <div class="input-row" >
+                    <input type="text" id='numberQuestionLevelHard' class="hard" placeholder="Not Set">
+                    <input type="text" id='numberQuestionLevelMedium' class="medium" placeholder="Not Set">
+                    <input type="text" id='numberQuestionLevelEasy' class="easy" placeholder="Not Set">
+                </div>
+
+                <label for="type" style="padding-right: 72px;">Type:</label>
+                <select id="type" class="input-single" style="text-align: left; width: 191px;" name="type">
+                    <option value="en-vn">EN - VN</option>
+                    <option value="vn-en">VN - EN</option>
+                    <option value="random">Random</option>
+                </select><br><br>
+
+                <label for="time" style="padding-right: 24px;">Time (mins):</label>
+                <input type="text" id="time" name="time" class="input-single" placeholder="Unlimited"><br><br>
+
+                <div>
+                    <label for="skip">Check correct:</label>
+                    <input type="checkbox" id="correctCheck" name="correctCheck" style="margin-right: 20px;" checked>
+                    <label for="skip">Display correct:</label>
+                    <input type="checkbox" id="correctDisplay" name="correctDisplay" style="margin-right: 20px;" checked>
+                </div>
+                <br>
+                <label for="tryAgainTimes">Try again times:</label>
+                <input type="text" id="tryAgainTimes" class="input-single" name="tryAgainTimes" value="0"><br><br>
+
+                <label>Wrong minus score:</label>
+                <div class="input-row" id="wrongMinusLevel">
+                    <input type="text" id="wrongMinusLevelHard" class="hard" placeholder="Hard" value="5">
+                    <input type="text" id="wrongMinusLevelMedium" class="medium" placeholder="Medium" value="5">
+                    <input type="text" id="wrongMinusLevelEasy" class="easy" placeholder="Easy" value="5">
+                </div>
+
+                <label>Right plus score:</label>
+                <div class="input-row" id="rightPlusLevel">
+                    <input type="text" id="rightPlusLevelHard"  class="hard" placeholder="Hard" value="10">
+                    <input type="text" id="rightPlusLevelMedium" class="medium" placeholder="Medium" value="10">
+                    <input type="text" id="rightPlusLevelEasy" class="easy" placeholder="Easy" value="10">
+                </div>
+                <div>
+                    <label for="skip">Skip:</label>
+                    <input type="checkbox" id="skip" name="skip" style="margin-right: 20px;">
+                    <label> <i>Skip minus score:</i> </label>
+                    <div class="input-row" id="skipMinusLevel">
+                        <input type="text" id="skipMinusLevelHard" class="hard" placeholder="Hard" value="1">
+                        <input type="text" id="skipMinusLevelMedium" class="medium" placeholder="Medium" value="2">
+                        <input type="text" id="skipMinusLevelEasy" class="easy" placeholder="Easy" value="3">
+                    </div>
+                </div>
+                <div>
+                    <label for="skip">Hint:</label>
+                    <input type="checkbox" id="hint" name="skip" style="margin-right: 20px;" checked>
+                    Max hint: <input type="text" id="maxHit" class="input-single" placeholder="Unlimited">
+                    <label> <i>Hint minus score:</i> </label>
+                    <div class="input-row" style="margin-top: 10px;" id="hintMinusLevel">
+                        <input type="text" id="hintMinusLevelHard" class="hard" placeholder="Hard" value="1">
+                        <input type="text" id="hintMinusLevelHedium" class="medium" placeholder="Medium" value="2">
+                        <input type="text" id="hintMinusLevelEasy" class="easy" placeholder="Easy" value="3">
+                    </div>
+                </div>
+                <div class="button_getModel">
+                    <button type="button" class="button_base" onclick="closePopup_getlink()">Cancel</button>
+                    <button type="button" class="button_base" onclick="createLink()">Create</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Login Popup -->
+    <div id="loginPopup" class="popup-login">
+        <div class="popup-content-login">
+            <span class="close-login" onclick="closeLoginPopup()">&times;</span>
+            <h2>Login</h2>
+            <label for="username">Username:</label>
+            <input class="input-single-login" style="text-align: left;" type="text" id="username_login"> <br><br>
+            <label for="password">Password:</label>
+            <input class="input-single-login" style="text-align: left;" type="password" id="password_login"><br>
+            <div class="button_getModel-login"> <button class="button_base-login" onclick="login()">Login</button></div>
+        </div>
+    </div>
+
+    <script src="js/loginC.js"></script>
+    <script src="js/add.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Answers</title>
+    <link rel="stylesheet" href="css/result.css" />
+    <link rel="stylesheet" href="css/loginC.css">
+</head>
+<body>
+    <div class="container">
+    <h1>Answers</h1>
+    <div class="search-container">
+        <input type="text" id="username" placeholder="Enter test username">
+        <button onclick="searchAnswers()">Search</button>
+    </div>
+    <table>
+        <thead>
+            <tr>
+                <th>Test User</th>
+                <th>Topic</th>
+                <th>Duration</th>
+                <th>Total Point</th>
+            </tr>
+        </thead>
+        <tbody id="answers-table-body">
+        </tbody>
+    </table>
+    </div>
+    <div id="loginPopup" class="popup-login">
+        <div class="popup-content-login">
+            <span class="close-login" onclick="closeLoginPopup()">&times;</span>
+            <h2>Login</h2>
+            <label for="username">Username:</label>
+            <input class="input-single-login" style="text-align: left;" type="text" id="username_login"> <br><br>
+            <label for="password">Password:</label>
+            <input class="input-single-login" style="text-align: left;" type="password" id="password_login"><br>
+            <div class="button_getModel-login"> <button class="button_base-login" onclick="login()">Login</button></div>
+        </div>
+    </div>
+
+    <script src="js/loginC.js"></script>
+    <script src="js/result.js"></script>
+</body>
+</html>

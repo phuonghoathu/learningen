@@ -1,0 +1,19 @@
+#canvas-container {
+    position: relative;
+    width: 600px;
+    height: 400px;
+    margin: 0 auto;
+}
+
+#canvas {
+    border: 1px solid #000;
+    width: 100%;
+    height: 100%;
+}
+
+button {
+    margin: 7px;
+    padding: 7px;
+    background-color: greenyellow;
+    border-radius: 5px;
+}

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learning New Words</title>
+    <!-- Toastr CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+    <!-- Toastr JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+    <link rel="stylesheet" href="css/index.css">
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="header" >
+            <h1>Quiz new words</h1>
+            <div class="clock">
+                <div class="circle">
+                    <svg width="80" viewBox="0 0 220 220" xmlns="http://www.w3.org/2000/svg">
+                       <g transform="translate(110,110)">
+                          <circle r="100" class="e-c-base"/>
+                          <g transform="rotate(-90)">
+                             <circle r="100" class="e-c-progress"/>
+                             <g id="e-pointer">
+                                <circle cx="100" cy="0" r="8" class="e-c-pointer"/>
+                             </g>
+                          </g>
+                       </g>
+                    </svg>
+                 </div>
+                 <div class="controlls">
+                    <div class="display-remain-time">00:00</div>
+                 </div>
+            </div>
+        </div>
+        
+        <div class="score">
+            <p style="color: blue;">Score <span style="color: darkred;" id="score">0</span></p>
+        </div>
+        <div class="content">
+            <div class="word-card">
+                <p id="wordCard">x</p>
+            </div>
+            <div class="input-answer">
+                <input type="text" id="inputAnswer" placeholder="Input answer">
+            </div>
+            <div class="button">
+                <button id="submitAnswer">Trả lời</button>
+                <button id="skip" style="display: none;">Bỏ qua</button>
+                <button id="hint" style="display: none;">Gợi ý</button>
+            </div>
+            <div class="button">
+                <button id="submitQuiz">Nộp bài</button>
+            </div>
+            <div id="leveLBar" style="height: 13px;width: 106%;"></div>
+        </div>
+    </div>
+    <div id="effectContainer"></div>
+    <div id="hintModal" class="modal" style="display: none;">
+        <div class="modal-content" style="text-align: center;">
+            <p style="font-weight: bold; color: red;">You will minus point for each click</p>
+            <span class="close">&times;</span>
+            <p id="hintContent"></p>
+        </div>
+    </div>
+    <div id="authModal" class="modal">
+        <div class="modal-content" style="width: 500px;">
+            <span class="close">&times;</span>
+            <h2>Enter your name and passcode</h2>
+            <p class="error-message" id="errorMessage"></p>
+            <form id="authForm">
+                <div class="input-pair">
+                    <input type="text" id="name" name="name" placeholder="Your Name" required><br><br>
+                    <input type="password" id="passcode" name="passcode" placeholder="Passcode" required><br><br>
+                </div>
+                <div class="button" style="text-align: right;">
+                    <button  type="submit">Ready To Test</button>
+                </div>
+                
+            </form>
+        </div>
+    </div>
+    <script src="js/index.js"></script>
+</body>
+</html>

@@ -1,0 +1,285 @@
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    background-color: #f9f9f9;
+}
+
+.container {
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 800px;
+    text-align: center;
+}
+
+.header {
+    margin-bottom: 20px;
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.add-word {
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.input-pair {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.input-pair input {
+    width: 48%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    text-align: center;
+}
+
+.button button {
+    background-color: red;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    width: 100%;
+}
+
+.button button:hover {
+    background-color: darkred;
+}
+
+.word-list {
+    width: 100%;
+}
+
+.word-list table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.word-list th, .word-list td {
+    padding: 10px;
+    border: 1px solid #ddd;
+    text-align: center;
+}
+
+.word-list button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.word-list button.edit {
+    margin-right: 5px;
+}
+
+.word-list button.delete {
+    background-color: #dc3545;
+}
+
+.word-list button.delete:hover {
+    background-color: #c82333;
+}
+
+.word-list button.edit:hover {
+    background-color: #0056b3;
+}
+.dropdown-container {
+    display: flex;
+}
+
+.button_getModel {
+    text-align: right;
+    margin-top: 20px;
+}
+.button_base {
+    width: 20%;
+    height: 36px;
+    margin-left: 20px;
+    background-color: red;
+    border-radius: 8px;
+    border: none;
+    color: white;
+}
+
+#sessionDropdown,#modalSessionDropdown, #modalSessionLearningDropdown{
+    width: 50%;
+    padding: 8px;
+    font-size: 16px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    min-width: 200px; /* Adjust this value as needed */
+}
+.popup {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    overflow: auto;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.4);
+}
+
+.popup-content {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 500px;
+    border-radius: 8px;
+    text-align: center;
+}
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+#level {
+    width: 51%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    text-align: center;
+}
+
+.input-single {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    text-align: right;
+    padding: 10px;
+}
+.input-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+.input-row input {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    width: 30%;
+    text-align: right;
+    padding: 10px;
+    margin-left: 5px;
+}
+
+input::placeholder {
+    opacity: 0.8;
+    color: black;
+}
+
+.hard {
+    background-color: red;
+}
+
+.medium {
+    background-color: greenyellow;
+}
+
+.easy {
+    background-color: aquamarine;
+}
+
+#editEnglish {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    text-align: left;
+}
+
+#editVietnamese {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    text-align: left;
+    margin-top: 7px;
+    margin-bottom: 12px;
+}
+#editLevel {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    text-align: left;
+    width: 107px;
+}
+
+#editDescription {
+    padding: 10px;
+    border: 1px solid rgb(221, 221, 221);
+    border-radius: 8px;
+    text-align: left;
+    width: 369px;
+    height: 36px;
+}
+#editImage {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    text-align: left;
+    margin-top: 7px;
+    margin-bottom: 12px;
+}
+
+
+#buttonEditWord{
+    background-color: red;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    width: 100%;
+}
+
+.tooltip {
+    position: relative;
+    display: inline-block;
+}
+.tooltip .tooltiptext {
+    visibility: hidden;
+    width: 100%;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px;
+    position: absolute;
+    z-index: 1;
+    bottom: 100%;
+    left: 50%;
+    margin-left: -60px;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+    opacity: 1;
+}

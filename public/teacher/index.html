@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catalogue List</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            color: #fff;
+            margin: 50px;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .catalogue-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            max-width: 1000px;
+        }
+
+        .catalogue-card {
+            background-color: darkolivegreen;
+            border-radius: 10px;
+            padding: 20px;
+            width: 300px;
+            margin: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            display: flex;
+            align-items: center;
+            position: relative;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .catalogue-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .catalogue-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background-color: burlywood;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 20px;
+            position: absolute;
+            top: -30px;
+            left: 20px;
+        }
+
+        .catalogue-icon img {
+            width: 60px;
+            height: 60px;
+        }
+
+        .catalogue-content {
+            margin-left: 80px;
+        }
+
+        .catalogue-title {
+            font-size: 1.2em;
+            margin: 0;
+        }
+
+        .catalogue-handle {
+            color: #888;
+            font-size: 0.9em;
+            margin: 5px 0;
+        }
+
+        .catalogue-description {
+            font-size: 0.9em;
+            margin: 10px 0;
+        }
+
+        .join-button {
+            background-color: #00b8d4;
+            color: white;
+            border: none;
+            padding: 10px 60px;
+            margin-left: 75px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 0.9em;
+            transition: background-color 0.3s ease;
+        }
+
+        .join-button:hover {
+            background-color: #00a2bb;
+        }
+    </style>
+</head>
+<body>
+    <div class="catalogue-container">
+        <div class="catalogue-card">
+            <div class="catalogue-icon">
+                <img src="/uploads/icon/new_3782903.png" alt="Catalogue Icon">
+            </div>
+            <div class="catalogue-content">
+                <h3 class="catalogue-title">Thêm từ mới</h3>
+                <p class="catalogue-description">
+                    Bạn có thể thêm từ mới theo từng section. Sau đó tạo các liên kết để học sinh vào học hoặc test kiến thức.
+                </p>
+                <button class="join-button"  onclick="window.location.href='add.html'">Go</button>
+            </div>
+        </div>
+
+        <div class="catalogue-card">
+            <div class="catalogue-icon">
+                <img src="/uploads/icon/rst_3782903.png" alt="Catalogue Icon">
+            </div>
+            <div class="catalogue-content">
+                <h3 class="catalogue-title">Kết quả</h3>
+                <p class="catalogue-description">
+                    Xem kết quả kiểm tra từ mới của học sinh
+                </p>
+                <button class="join-button" onclick="window.location.href='result.html'">Go</button>
+            </div>
+        </div>
+
+        <!-- Add more catalogue cards as needed -->
+    </div><div class="catalogue-container">
+        <div class="catalogue-card">
+            <div class="catalogue-icon">
+                <img src="/uploads/icon/rst_3782903.png" alt="Catalogue Icon">
+            </div>
+            <div class="catalogue-content">
+                <h3 class="catalogue-title">Reading</h3>
+                <p class="catalogue-description">
+                    Tạo đoạn reading cho học sinh. 
+                </p>
+                <button class="join-button"  onclick="window.location.href='converstion.html'">Go</button>
+            </div>
+        </div>
+
+        <div class="catalogue-card">
+            <div class="catalogue-icon">
+                <img src="/uploads/icon/rst_3782903.png" alt="Catalogue Icon">
+            </div>
+            <div class="catalogue-content">
+                <h3 class="catalogue-title">Image test</h3>
+                <p class="catalogue-description">
+                    Giao bài tập bằng hình ảnh, học sinh sẽ fill thông tin lên
+                </p>
+                <button class="join-button">Go</button>
+            </div>
+        </div>
+
+        <!-- Add more catalogue cards as needed -->
+    </div>
+</body>
+</html>
